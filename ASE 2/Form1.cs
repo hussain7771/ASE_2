@@ -44,7 +44,16 @@ namespace ASE_2
 
         private void Open_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog opentext = new OpenFileDialog();
+            if (opentext.ShowDialog() == DialogResult.OK)
+            {
+                string selectedFileName = opentext.FileName;
+                CommandInput.LoadFile(selectedFileName, RichTextBoxStreamType.PlainText);
+            }
+            else
+            {
+                HelperFunctions.DisplayMessage(pictureBox, "Error Occurred");
+            }
         }
 
         private void Clear_Click(object sender, EventArgs e)
