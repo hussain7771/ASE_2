@@ -39,7 +39,8 @@ namespace ASE_2
 
         private void Clear_Click(object sender, EventArgs e)
         {
-
+            CommandInput.Text = "";
+            pictureBox.Image = null;
         }
 
     }
