@@ -16,5 +16,31 @@ namespace ASE_2
         {
             InitializeComponent();
         }
+
+        private void Run_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Open_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
