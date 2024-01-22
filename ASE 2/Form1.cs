@@ -29,7 +29,17 @@ namespace ASE_2
 
         private void Save_Click(object sender, EventArgs e)
         {
-
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|RTF Files (*.rtf)|*.rtf";
+            saveFileDialog.AddExtension = true;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var extension = System.IO.Path.GetExtension(saveFileDialog.FileName);
+                if (extension.ToLower() == ".txt")
+                    CommandInput.SaveFile(saveFileDialog.FileName, RichTextBoxStreamType.PlainText);
+                else
+                    CommandInput.SaveFile(saveFileDialog.FileName, RichTextBoxStreamType.RichText);
+            }
         }
 
         private void Open_Click(object sender, EventArgs e)
