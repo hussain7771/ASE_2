@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ASE_2
 {
-    public class HelperFunction
+    public class HelperFunctions
     {
         public static void DisplayMessage(PictureBox pictureBox, string errorMessage)
         {

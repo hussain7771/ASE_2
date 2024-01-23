@@ -12,14 +12,30 @@ namespace ASE_2
 {
     public partial class Form1 : Form
     {
+        private int x = 0, y = 0;
+        private Graphics g;
+        private Pen pen;
+        private Brush brush;
+        private CircleDrawer circleDrawer;
+        private RectangleDrawer rectangleDrawer;
+
         public Form1()
         {
             InitializeComponent();
+            g = pictureBox.CreateGraphics();
+            pen = new Pen(Color.Blue, 2);
+            brush = new SolidBrush(Color.Red);
+            circleDrawer = new CircleDrawer(g, pen, brush);
+            rectangleDrawer = new RectangleDrawer(g, pen, brush);
         }
 
         private void Run_Click(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrWhiteSpace(CommandInput.Text))
+            {
+                HelperFunctions.DisplayMessage(pictureBox, "Please Enter Command.");
+                return;
+            }
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
