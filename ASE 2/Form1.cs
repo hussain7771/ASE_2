@@ -36,6 +36,7 @@ namespace ASE_2
                 HelperFunctions.DisplayMessage(pictureBox, "Please Enter Command.");
                 return;
             }
+            ProcessCommand(CommandInput.Text);
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
@@ -79,5 +80,79 @@ namespace ASE_2
             pictureBox.Image = null;
         }
 
+        private void ProcessCommand(string command)
+        {
+            string[] commandParts = command.Split(' ');
+
+            if (commandParts.Length >= 2)
+            {
+                string action = commandParts[0].ToLower();
+
+                switch (action)
+                {
+                    case "circle":
+                        HandleCircleCommand(commandParts);
+                        break;
+
+                    case "moveto":
+                        HandleMoveToCommand(commandParts);
+                        break;
+
+                    case "rect":
+                        HandleRectangleCommand(commandParts);
+                        break;
+
+                    default:
+                        HelperFunctions.DisplayMessage(pictureBox, "Invalid Command.");
+                        break;
+                }
+            }
+            else
+            {
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Command Format.");
+            }
+        }
+
+        private void HandleCircleCommand(string[] commandParts)
+        {
+            int radius;
+            if (int.TryParse(commandParts[1], out radius))
+            {
+                circleDrawer.DrawCircle(radius, x, y);
+            }
+            else
+            {
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Radius.");
+            }
+        }
+
+        private void HandleMoveToCommand(string[] commandParts)
+        {
+            int newX, newY;
+
+            if (int.TryParse(commandParts[1], out newX) && int.TryParse(commandParts[2], out newY))
+            {
+                x += newX;
+                y += newY;
+            }
+            else
+            {
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Coordinates.");
+            }
+        }
+
+        private void HandleRectangleCommand(string[] commandParts)
+        {
+            int width, height;
+
+            if (int.TryParse(commandParts[1], out width) && int.TryParse(commandParts[2], out height))
+            {
+                rectangleDrawer.DrawRectangle(width, height, x, y);
+            }
+            else
+            {
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Rectangle Dimensions.");
+            }
+        }
     }
 }
