@@ -18,6 +18,7 @@ namespace ASE_2
         private Brush brush;
         private CircleDrawer circleDrawer;
         private RectangleDrawer rectangleDrawer;
+        private SquareDrawer squareDrawer;
 
         public Form1()
         {
@@ -27,6 +28,8 @@ namespace ASE_2
             brush = new SolidBrush(Color.Red);
             circleDrawer = new CircleDrawer(g, pen, brush);
             rectangleDrawer = new RectangleDrawer(g, pen, brush);
+            squareDrawer = new SquareDrawer(g, pen);
+
         }
 
         private void Run_Click(object sender, EventArgs e)
@@ -82,36 +85,46 @@ namespace ASE_2
 
         private void ProcessCommand(string command)
         {
-            string[] commandParts = command.Split(' ');
+            string[] commands = command.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (commandParts.Length >= 2)
+            foreach (string cmd in commands)
             {
-                string action = commandParts[0].ToLower();
+                string[] commandParts = cmd.Split(' ');
 
-                switch (action)
+                if (commandParts.Length >= 2)
                 {
-                    case "circle":
-                        HandleCircleCommand(commandParts);
-                        break;
+                    string action = commandParts[0].ToLower();
 
-                    case "moveto":
-                        HandleMoveToCommand(commandParts);
-                        break;
+                    switch (action)
+                    {
+                        case "circle":
+                            HandleCircleCommand(commandParts);
+                            break;
 
-                    case "rect":
-                        HandleRectangleCommand(commandParts);
-                        break;
+                        case "moveto":
+                            HandleMoveToCommand(commandParts);
+                            break;
 
-                    default:
-                        HelperFunctions.DisplayMessage(pictureBox, "Invalid Command.");
-                        break;
+                        case "rect":
+                            HandleRectangleCommand(commandParts);
+                            break;
+
+                        case "square":
+                            HandleSquareCommand(commandParts);
+                            break;
+
+                        default:
+                            HelperFunctions.DisplayMessage(pictureBox, "Invalid Command: " + cmd);
+                            break;
+                    }
+                }
+                else
+                {
+                    HelperFunctions.DisplayMessage(pictureBox, "Invalid Command Format: " + cmd);
                 }
             }
-            else
-            {
-                HelperFunctions.DisplayMessage(pictureBox, "Invalid Command Format.");
-            }
         }
+
 
         private void HandleCircleCommand(string[] commandParts)
         {
@@ -152,6 +165,20 @@ namespace ASE_2
             else
             {
                 HelperFunctions.DisplayMessage(pictureBox, "Invalid Rectangle Dimensions.");
+            }
+        }
+
+        private void HandleSquareCommand(string[] commandParts)
+        {
+            int size;
+
+            if (int.TryParse(commandParts[1], out size))
+            {
+                squareDrawer.DrawSquare(size, x, y);
+            }
+            else
+            {
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Square Size.");
             }
         }
     }
