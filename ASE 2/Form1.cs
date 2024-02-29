@@ -24,7 +24,7 @@ namespace ASE_2
         {
             InitializeComponent();
             g = pictureBox.CreateGraphics();
-            pen = new Pen(Color.Blue, 2);
+            pen = new Pen(Color.Black, 2);
             brush = new SolidBrush(Color.Red);
             circleDrawer = new CircleDrawer(g, pen, brush);
             rectangleDrawer = new RectangleDrawer(g, pen, brush);
@@ -113,6 +113,10 @@ namespace ASE_2
                             HandleSquareCommand(commandParts);
                             break;
 
+                        case "pen":
+                            HandleColorCommand(commandParts);
+                            break;
+
                         default:
                             HelperFunctions.DisplayMessage(pictureBox, "Invalid Command: " + cmd);
                             break;
@@ -179,6 +183,51 @@ namespace ASE_2
             else
             {
                 HelperFunctions.DisplayMessage(pictureBox, "Invalid Square Size.");
+            }
+        }
+
+        private void HandleColorCommand(string[] commandParts)
+        {
+            if (commandParts.Length >= 2)
+            {
+                string colorName = commandParts[1].ToLower();
+                Color color;
+
+                switch (colorName)
+                {
+                    case "red":
+                        color = Color.Red;
+                        break;
+
+                    case "green":
+                        color = Color.Green;
+                        break;
+
+                    case "blue":
+                        color = Color.Blue;
+                        break;
+
+                    case "yellow":
+                        color = Color.Yellow;
+                        break;
+
+                    case "purple":
+                        color = Color.Purple;
+                        break;
+
+                    // Add more cases for additional colors as needed
+
+                    default:
+                        HelperFunctions.DisplayMessage(pictureBox, "Invalid Color Name.");
+                        return;
+                }
+
+                // Update pen color
+                pen.Color = color;
+            }
+            else
+            {
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Color Command Format.");
             }
         }
     }
