@@ -19,6 +19,8 @@ namespace ASE_2
         private CircleDrawer circleDrawer;
         private RectangleDrawer rectangleDrawer;
         private SquareDrawer squareDrawer;
+        private Dictionary<string, int> variables = new Dictionary<string, int>();
+
 
         public Form1()
         {
@@ -40,6 +42,27 @@ namespace ASE_2
                 return;
             }
             ProcessCommand(CommandInput.Text);
+        }
+
+        private int ParseParameterValue(string parameter)
+        {
+            if (variables.ContainsKey(parameter))
+            {
+                return variables[parameter]; // Return value of variable
+            }
+            else
+            {
+                int value;
+                if (int.TryParse(parameter, out value))
+                {
+                    return value; // Return numerical value
+                }
+                else
+                {
+                    HelperFunctions.DisplayMessage(pictureBox, "Invalid Parameter Value: " + parameter);
+                    return 0; // Default value if parsing fails
+                }
+            }
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
@@ -79,8 +102,18 @@ namespace ASE_2
         private void Clear_Click(object sender, EventArgs e)
         {
 
-            CommandInput.Text = "";
+            // Clear variables dictionary
+            variables.Clear();
+
+            // Reset drawing position (x and y)
+            x = 0;
+            y = 0;
+
+            // Clear picture box
             pictureBox.Image = null;
+
+            // Reset pen color to black
+            pen.Color = Color.Black;
         }
 
         private void ProcessCommand(string command)
@@ -97,6 +130,10 @@ namespace ASE_2
 
                     switch (action)
                     {
+                        case "var":
+                            HandleVariableDeclaration(commandParts);
+                            break;
+
                         case "circle":
                             HandleCircleCommand(commandParts);
                             break;
@@ -129,60 +166,80 @@ namespace ASE_2
             }
         }
 
+        private void HandleVariableDeclaration(string[] commandParts)
+        {
+            if (commandParts.Length >= 3)
+            {
+                string variableName = commandParts[1];
+                int variableValue = ParseParameterValue(commandParts[2]);
+
+                if (variables.ContainsKey(variableName))
+                {
+                    variables[variableName] = variableValue; // Update existing variable
+                }
+                else
+                {
+                    variables.Add(variableName, variableValue); // Add new variable
+                }
+            }
+            else
+            {
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Variable Declaration: " + string.Join(" ", commandParts));
+            }
+        }
 
         private void HandleCircleCommand(string[] commandParts)
         {
-            int radius;
-            if (int.TryParse(commandParts[1], out radius))
+            if (commandParts.Length >= 2)
             {
+                int radius = ParseParameterValue(commandParts[1]);
                 circleDrawer.DrawCircle(radius, x, y);
             }
             else
             {
-                HelperFunctions.DisplayMessage(pictureBox, "Invalid Radius.");
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Circle Command: " + string.Join(" ", commandParts));
             }
         }
 
         private void HandleMoveToCommand(string[] commandParts)
         {
-            int newX, newY;
-
-            if (int.TryParse(commandParts[1], out newX) && int.TryParse(commandParts[2], out newY))
+            if (commandParts.Length >= 3)
             {
-                x += newX;
-                y += newY;
+                int newX = ParseParameterValue(commandParts[1]);
+                int newY = ParseParameterValue(commandParts[2]);
+                x = newX;
+                y = newY;
             }
             else
             {
-                HelperFunctions.DisplayMessage(pictureBox, "Invalid Coordinates.");
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid MoveTo Command: " + string.Join(" ", commandParts));
             }
         }
 
         private void HandleRectangleCommand(string[] commandParts)
         {
-            int width, height;
-
-            if (int.TryParse(commandParts[1], out width) && int.TryParse(commandParts[2], out height))
+            if (commandParts.Length >= 3)
             {
+                int width = ParseParameterValue(commandParts[1]);
+                int height = ParseParameterValue(commandParts[2]);
                 rectangleDrawer.DrawRectangle(width, height, x, y);
             }
             else
             {
-                HelperFunctions.DisplayMessage(pictureBox, "Invalid Rectangle Dimensions.");
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Rectangle Command: " + string.Join(" ", commandParts));
             }
         }
 
         private void HandleSquareCommand(string[] commandParts)
         {
-            int size;
-
-            if (int.TryParse(commandParts[1], out size))
+            if (commandParts.Length >= 2)
             {
+                int size = ParseParameterValue(commandParts[1]);
                 squareDrawer.DrawSquare(size, x, y);
             }
             else
             {
-                HelperFunctions.DisplayMessage(pictureBox, "Invalid Square Size.");
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Square Command: " + string.Join(" ", commandParts));
             }
         }
 
@@ -215,19 +272,16 @@ namespace ASE_2
                         color = Color.Purple;
                         break;
 
-                    // Add more cases for additional colors as needed
-
                     default:
-                        HelperFunctions.DisplayMessage(pictureBox, "Invalid Color Name.");
+                        HelperFunctions.DisplayMessage(pictureBox, "Invalid Color Name: " + colorName);
                         return;
                 }
 
-                // Update pen color
                 pen.Color = color;
             }
             else
             {
-                HelperFunctions.DisplayMessage(pictureBox, "Invalid Color Command Format.");
+                HelperFunctions.DisplayMessage(pictureBox, "Invalid Color Command Format: " + string.Join(" ", commandParts));
             }
         }
     }

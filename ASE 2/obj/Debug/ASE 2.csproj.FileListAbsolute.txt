@@ -8,3 +8,13 @@ C:\Users\PC\Desktop\ASE_2\ASE_2\ASE 2\obj\Debug\ASE 2.csproj.GenerateResource.ca
 C:\Users\PC\Desktop\ASE_2\ASE_2\ASE 2\obj\Debug\ASE 2.csproj.CoreCompileInputs.cache
 C:\Users\PC\Desktop\ASE_2\ASE_2\ASE 2\obj\Debug\ASE 2.exe
 C:\Users\PC\Desktop\ASE_2\ASE_2\ASE 2\obj\Debug\ASE 2.pdb
+C:\Users\PC\Desktop\ASE_2\ASE 2\bin\Debug\ASE 2.exe.config
+C:\Users\PC\Desktop\ASE_2\ASE 2\bin\Debug\ASE 2.exe
+C:\Users\PC\Desktop\ASE_2\ASE 2\bin\Debug\ASE 2.pdb
+C:\Users\PC\Desktop\ASE_2\ASE 2\obj\Debug\ASE 2.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\ASE_2\ASE 2\obj\Debug\ASE_2.Form1.resources
+C:\Users\PC\Desktop\ASE_2\ASE 2\obj\Debug\ASE_2.Properties.Resources.resources
+C:\Users\PC\Desktop\ASE_2\ASE 2\obj\Debug\ASE 2.csproj.GenerateResource.cache
+C:\Users\PC\Desktop\ASE_2\ASE 2\obj\Debug\ASE 2.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\ASE_2\ASE 2\obj\Debug\ASE 2.exe
+C:\Users\PC\Desktop\ASE_2\ASE 2\obj\Debug\ASE 2.pdb
