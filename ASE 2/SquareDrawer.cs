@@ -19,8 +19,8 @@ namespace ASE_2
         }
 
         public void DrawSquare(int size, int x, int y)
-        {
-            // Draw a square using the specified size and location
+        {  
+            // Draw a square using the specified size and location sfsw 
             g.DrawRectangle(pen, x, y, size, size);
         }
     }
