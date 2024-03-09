@@ -168,10 +168,10 @@ namespace ASE_2
 
         private void HandleVariableDeclaration(string[] commandParts)
         {
-            if (commandParts.Length >= 3)
+            if (commandParts.Length >= 4 && commandParts[2] == "=")
             {
                 string variableName = commandParts[1];
-                int variableValue = ParseParameterValue(commandParts[2]);
+                int variableValue = ParseParameterValue(commandParts[3]);
 
                 if (variables.ContainsKey(variableName))
                 {
@@ -187,6 +187,7 @@ namespace ASE_2
                 HelperFunctions.DisplayMessage(pictureBox, "Invalid Variable Declaration: " + string.Join(" ", commandParts));
             }
         }
+
 
         private void HandleCircleCommand(string[] commandParts)
         {
