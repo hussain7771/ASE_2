@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ASE_2;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,7 @@ namespace ASE_2
         private RectangleDrawer rectangleDrawer;
         private SquareDrawer squareDrawer;
         private Dictionary<string, int> variables = new Dictionary<string, int>();
+        private readonly VariableProcessor variableHandler = VariableProcessor.Singleton;
 
 
         public Form1()
@@ -155,7 +157,15 @@ namespace ASE_2
                             break;
 
                         default:
-                            HelperFunctions.DisplayMessage(pictureBox, "Invalid Command: " + cmd);
+                            if (commandParts[1].Contains("="))
+                            {
+                                HandleVariableDeclaration(commandParts);
+
+                            }
+                            else
+                            {
+                                HelperFunctions.DisplayMessage(pictureBox, "Invalid Command: " + cmd);
+                            }
                             break;
                     }
                 }
@@ -168,19 +178,23 @@ namespace ASE_2
 
         private void HandleVariableDeclaration(string[] commandParts)
         {
-            if (commandParts.Length >= 4 && commandParts[2] == "=")
-            {
-                string variableName = commandParts[1];
-                int variableValue = ParseParameterValue(commandParts[3]);
 
-                if (variables.ContainsKey(variableName))
+            if (commandParts.Contains("="))
+            {
+                if (commandParts[0] == "var")
                 {
-                    variables[variableName] = variableValue; // Update existing variable
+                    string variableAssignmentCommand = string.Join(" ", commandParts.Skip(1));
+
+                    variableHandler.ProcessVariableAssignment(variableAssignmentCommand);
                 }
                 else
                 {
-                    variables.Add(variableName, variableValue); // Add new variable
+                    string variableAssignmentCommand = string.Join(" ", commandParts);
+
+                    variableHandler.ProcessVariableAssignment(variableAssignmentCommand);
+
                 }
+
             }
             else
             {
@@ -191,10 +205,20 @@ namespace ASE_2
 
         private void HandleCircleCommand(string[] commandParts)
         {
+
             if (commandParts.Length >= 2)
             {
-                int radius = ParseParameterValue(commandParts[1]);
-                circleDrawer.DrawCircle(radius, x, y);
+                int circleRadius;
+
+                if (int.TryParse(commandParts[1], out circleRadius) || TryGetVariableValue(commandParts[1], out circleRadius))
+                {
+                    if (circleRadius <= 0)
+                    {
+                        throw new ArgumentException("circle radius value should be positive");
+                    }
+                    circleDrawer.DrawCircle(circleRadius, x, y);
+                }
+
             }
             else
             {
@@ -206,10 +230,15 @@ namespace ASE_2
         {
             if (commandParts.Length >= 3)
             {
-                int newX = ParseParameterValue(commandParts[1]);
-                int newY = ParseParameterValue(commandParts[2]);
-                x = newX;
-                y = newY;
+                int newX, newY;
+
+                if ((int.TryParse(commandParts[1], out newX) || TryGetVariableValue(commandParts[1], out newX)) &&
+                    (int.TryParse(commandParts[2], out newY) || TryGetVariableValue(commandParts[2], out newY)))
+                {
+
+                    x = newX;
+                    y = newY;
+                }
             }
             else
             {
@@ -284,6 +313,12 @@ namespace ASE_2
             {
                 HelperFunctions.DisplayMessage(pictureBox, "Invalid Color Command Format: " + string.Join(" ", commandParts));
             }
+        }
+
+        private bool TryGetVariableValue(string variableName, out int variableValue)
+        {
+            variableValue = variableHandler.GetVariableValue(variableName);
+            return variableValue > 0;
         }
     }
 }
