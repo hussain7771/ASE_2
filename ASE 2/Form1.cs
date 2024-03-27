@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection.Emit;
+
 
 namespace ASE_2
 {
@@ -21,7 +23,7 @@ namespace ASE_2
         private RectangleDrawer rectangleDrawer;
         private SquareDrawer squareDrawer;
         private Dictionary<string, int> variables = new Dictionary<string, int>();
-        private readonly VariableProcessor variableHandler = VariableProcessor.Singleton;
+        private readonly VariableProcessor VariableProcessor = VariableProcessor.Singleton;
 
 
         public Form1()
@@ -186,13 +188,13 @@ namespace ASE_2
                 {
                     string variableAssignmentCommand = string.Join(" ", commandParts.Skip(1));
 
-                    variableHandler.ProcessVariableAssignment(variableAssignmentCommand);
+                    VariableProcessor.ProcessVariableAssignment(variableAssignmentCommand);
                 }
                 else
                 {
                     string variableAssignmentCommand = string.Join(" ", commandParts);
 
-                    variableHandler.ProcessVariableAssignment(variableAssignmentCommand);
+                    VariableProcessor.ProcessVariableAssignment(variableAssignmentCommand);
 
                 }
 
@@ -318,7 +320,7 @@ namespace ASE_2
 
         private bool TryGetVariableValue(string variableName, out int variableValue)
         {
-            variableValue = variableHandler.GetVariableValue(variableName);
+            variableValue = VariableProcessor.GetVariableValue(variableName);
             return variableValue > 0;
         }
     }
