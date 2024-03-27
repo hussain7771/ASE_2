@@ -176,6 +176,7 @@ namespace ASE_2
             }
         }
 
+
         private void HandleVariableDeclaration(string[] commandParts)
         {
 
