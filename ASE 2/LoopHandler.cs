@@ -9,7 +9,7 @@ namespace ASE_2
     public class LoopHandler
     {
         private readonly VariableProcessor VariableProcessor;
-
+         
         public LoopHandler(VariableProcessor VariableProcessor)
         {
             this.VariableProcessor = VariableProcessor;

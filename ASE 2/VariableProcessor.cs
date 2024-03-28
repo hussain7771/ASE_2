@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Reflection.Emit;
 
-namespace ASE_2
+namespace ASE_2 
 {
     public class VariableProcessor
     {
