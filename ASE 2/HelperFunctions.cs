@@ -10,7 +10,8 @@ namespace ASE_2
 {
     public class HelperFunctions
     {
-        public static void DisplayMessage(PictureBox pictureBox, string errorMessage)
+
+        public static void DisplayMessage(PictureBox pictureBox, string errorMessage) 
         {
             // Create a new bitmap for the PictureBox
             Bitmap bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
@@ -32,5 +33,7 @@ namespace ASE_2
             // Display the modified image with the message in the PictureBox
             pictureBox.Image = bmp;
         }
+
+
     }
 }

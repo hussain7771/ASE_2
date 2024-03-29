@@ -57,7 +57,7 @@ namespace ASE_2
             return dataStorage.Keys;
         }
 
-        internal void ProcessVariableAssignment(string command)
+        public void ProcessVariableAssignment(string command)
         {
             string[] assignmentParts = command.Split('=').Select(part => part.Trim()).ToArray();
 
@@ -82,7 +82,7 @@ namespace ASE_2
             }
         }
 
-        internal int EvaluateExpression(string expression)
+        public int EvaluateExpression(string expression)
         {
             Dictionary<string, int> variableValues = new Dictionary<string, int>();
 
@@ -94,7 +94,7 @@ namespace ASE_2
             return ProcessRecursiveExpression(expression, variableValues);
         }
 
-        internal int ProcessRecursiveExpression(string expression, Dictionary<string, int> variableValues)
+        public int ProcessRecursiveExpression(string expression, Dictionary<string, int> variableValues)
         {
             if (int.TryParse(expression, out int value))
             {
