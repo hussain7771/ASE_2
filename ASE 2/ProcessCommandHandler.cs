@@ -17,11 +17,9 @@ namespace ASE_2
             this.pv = pv;
         }
 
-
         public void ProcessCommand(string command)
         {
             string[] commands = command.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
-
             int lineNumber = 1;
             int totalCommands = commands.Length;
             bool isInsideWhileBlock = false;
@@ -35,7 +33,6 @@ namespace ASE_2
                 if (commandParts.Length >= 1)
                 {
                     string action = commandParts[0].ToLower();
-
                     switch (action)
                     {
                         case "var":
@@ -143,7 +140,6 @@ namespace ASE_2
                 {
                     HelperFunctions.DisplayMessage(pictureBox, "Invalid Command Format: " + cmd);
                 }
-
                 lineNumber++;
             }
         }
@@ -151,11 +147,9 @@ namespace ASE_2
         public void ProcessSingleCommand(string cmd)
         {
             string[] commandParts = cmd.Split(' ');
-
             if (commandParts.Length >= 2)
             {
                 string action = commandParts[0].ToLower();
-
                 switch (action)
                 {
                     case "var":
@@ -202,7 +196,6 @@ namespace ASE_2
 
         public void HandleVariableDeclaration(string[] commandParts)
         {
-
             if (commandParts.Contains("="))
             {
                 if (commandParts[0] == "var")
@@ -214,9 +207,7 @@ namespace ASE_2
                 else
                 {
                     string variableAssignmentCommand = string.Join(" ", commandParts);
-
                     pv.VariableProcessor.ProcessVariableAssignment(variableAssignmentCommand);
-
                 }
 
             }
@@ -229,11 +220,9 @@ namespace ASE_2
 
         public void HandleCircleCommand(string[] commandParts)
         {
-
             if (commandParts.Length >= 2)
             {
                 int circleRadius;
-
                 if (int.TryParse(commandParts[1], out circleRadius) || TryGetVariableValue(commandParts[1], out circleRadius))
                 {
                     // Validate radius
@@ -260,7 +249,6 @@ namespace ASE_2
                 if ((int.TryParse(commandParts[1], out newX) || TryGetVariableValue(commandParts[1], out newX)) &&
                     (int.TryParse(commandParts[2], out newY) || TryGetVariableValue(commandParts[2], out newY)))
                 {
-
                     pv.x = newX;
                     pv.y = newY;
                 }

@@ -19,7 +19,7 @@ namespace ASE_2
             commandHandler = new ProcessCommandHandler(pv);
         }
 
-        private void Run_Click(object sender, EventArgs e)
+        public void Run_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(CommandInput.Text))
             {
@@ -55,7 +55,7 @@ namespace ASE_2
 
         }
 
-        private void Save_Click(object sender, EventArgs e)
+        public void Save_Click(object sender, EventArgs e)
         {
             var saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text Files (*.txt)|*.txt|RTF Files (*.rtf)|*.rtf";
@@ -70,7 +70,7 @@ namespace ASE_2
             }
         }
 
-        private void Open_Click(object sender, EventArgs e)
+        public void Open_Click(object sender, EventArgs e)
         {
             OpenFileDialog opentext = new OpenFileDialog();
             if (opentext.ShowDialog() == DialogResult.OK)
@@ -84,7 +84,7 @@ namespace ASE_2
             }
         }
 
-        private void Clear_Click(object sender, EventArgs e)
+        public void Clear_Click(object sender, EventArgs e)
         {
             pv.variables.Clear();
             pv.x = pv.y = 0;
@@ -94,6 +94,9 @@ namespace ASE_2
             pv.whileCondition = "";
         }
 
-       
+        public void Clear_Click(object value1, object value2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
