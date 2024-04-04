@@ -4,12 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ASE_Test
 {
+    /// <summary>
+    /// Unit tests for the VariableProcessor class.
+    /// </summary>
     [TestClass]
     public class VariableProcessorTests
     {
+        /// <summary>
+        /// Test to verify existence of an existing variable.
+        /// </summary>
         [TestMethod]
         public void ExistsForExistingVariable()
         {
@@ -24,6 +31,9 @@ namespace ASE_Test
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Test to verify getting value for an existing variable.
+        /// </summary>
         [TestMethod]
         public void GetValueForExistingVariable()
         {
@@ -38,6 +48,9 @@ namespace ASE_Test
             Assert.AreEqual(20, value);
         }
 
+        /// <summary>
+        /// Test to verify assigning value to a variable.
+        /// </summary>
         [TestMethod]
         public void AssignsValueToVariable()
         {
@@ -52,6 +65,9 @@ namespace ASE_Test
             Assert.AreEqual(30, variableProcessor.GetVariableValue("z"));
         }
 
+        /// <summary>
+        /// Test to verify clearing all variables.
+        /// </summary>
         [TestMethod]
         public void ClearsAllVariables()
         {
@@ -68,7 +84,9 @@ namespace ASE_Test
             Assert.IsFalse(variableProcessor.IsVariableExisting("b"));
         }
 
-
+        /// <summary>
+        /// Test to verify processing variable assignment.
+        /// </summary>
         [TestMethod]
         public void ProcessAssignment()
         {
@@ -83,6 +101,9 @@ namespace ASE_Test
             Assert.AreEqual(10, variableProcessor.GetVariableValue("x"));
         }
 
+        /// <summary>
+        /// Test to verify evaluating expression with variables.
+        /// </summary>
         [TestMethod]
         public void EvaluateWithVariables()
         {
@@ -98,6 +119,9 @@ namespace ASE_Test
             Assert.AreEqual(12, result);
         }
 
+        /// <summary>
+        /// Test to verify processing recursive expression.
+        /// </summary>
         [TestMethod]
         public void ProcessRecursiveExpression()
         {
