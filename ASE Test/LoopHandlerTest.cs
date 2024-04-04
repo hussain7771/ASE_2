@@ -4,12 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ASE_Test
 {
+    /// <summary>
+    /// Unit tests for the LoopHandler class.
+    /// </summary>
     [TestClass]
     public class LoopHandlerTests
     {
+        /// <summary>
+        /// Test to verify evaluation of a less than condition.
+        /// </summary>
         [TestMethod]
         public void EvaluatesLessThanCondition()
         {
@@ -25,6 +32,9 @@ namespace ASE_Test
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Test to verify evaluation of a greater than condition.
+        /// </summary>
         [TestMethod]
         public void EvaluatesGreaterThanCondition()
         {
@@ -40,6 +50,9 @@ namespace ASE_Test
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Test to verify evaluation of an equal to condition.
+        /// </summary>
         [TestMethod]
         public void EvaluatesEqualToCondition()
         {
@@ -55,6 +68,9 @@ namespace ASE_Test
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Test to verify that an exception is thrown for an invalid condition.
+        /// </summary>
         [TestMethod]
         public void ThrowsExceptionForInvalid()
         {
@@ -67,6 +83,9 @@ namespace ASE_Test
             Assert.ThrowsException<ArgumentException>(() => loopHandler.Evaluate("x invalidcondition"));
         }
 
+        /// <summary>
+        /// Test to verify that an exception is thrown for a non-numeric value in the condition.
+        /// </summary>
         [TestMethod]
         public void ThrowsExceptionForNonNumeric()
         {
