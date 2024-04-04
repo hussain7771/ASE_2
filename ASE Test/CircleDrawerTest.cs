@@ -5,9 +5,15 @@ using ASE_2;
 
 namespace ASE_Test
 {
+    /// <summary>
+    /// Unit tests for the CircleDrawer class.
+    /// </summary>
     [TestClass]
     public class CircleDrawerTests
     {
+        /// <summary>
+        /// Test to verify drawing a circle when the position x-coordinate is less than 10.
+        /// </summary>
         [TestMethod]
         public void DrawCircle_PositionLessThanCondition()
         {
