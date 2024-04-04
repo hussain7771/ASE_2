@@ -8,6 +8,9 @@ using System.Windows.Forms;
 
 namespace ASE_2
 {
+    /// <summary>
+    /// A class for storing private variables and objects used in the ASE application.
+    /// </summary>
     public class PrivateVariables
     {
         public int x = 0;
@@ -25,6 +28,10 @@ namespace ASE_2
         public LoopHandler whileCommandHandler;
         public string whileCondition = "";
 
+        /// <summary>
+        /// Initializes a new instance of the PrivateVariables class.
+        /// </summary>
+        /// <param name="pictureBox">The PictureBox control used for drawing.</param>
         public PrivateVariables(PictureBox pictureBox)
         {
             g = pictureBox.CreateGraphics();

@@ -7,17 +7,29 @@ using System.Windows.Forms;
 
 namespace ASE_2
 {
+    /// <summary>
+    /// A class for handling and processing commands.
+    /// </summary>
     public class ProcessCommandHandler
     {
         private PrivateVariables pv;
         private PictureBox pictureBox;
 
+
+        /// <summary>
+        /// Initializes a new instance of the ProcessCommandHandler class.
+        /// </summary>
+        /// <param name="pv">The private variables object.</param>
         public ProcessCommandHandler(PrivateVariables pv)
         {
             this.pv = pv;
         }
 
 
+        /// <summary>
+        /// Processes the input command.
+        /// </summary>
+        /// <param name="command">The command to be processed.</param>
         public void ProcessCommand(string command)
         {
             string[] commands = command.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
@@ -145,6 +157,10 @@ namespace ASE_2
             }
         }
 
+        /// <summary>
+        /// Processes a single command.
+        /// </summary>
+        /// <param name="cmd">This Prg is to process all string input user into command </param>
         public void ProcessSingleCommand(string cmd)
         {
             string[] commandParts = cmd.Split(' ');
@@ -195,6 +211,10 @@ namespace ASE_2
             }
         }
 
+        /// <summary>
+        /// Handle Variable declaration by user
+        /// </summary>
+        /// <param name="commandParts">This is to handle all operation related to variable </param>
         public void HandleVariableDeclaration(string[] commandParts)
         {
             if (commandParts.Contains("="))
@@ -218,7 +238,10 @@ namespace ASE_2
             }
         }
 
-
+        /// <summary>
+        /// Processes a Circle drawing.
+        /// </summary>
+        /// <param name="commandParts">This Prg is to handles circle command is correct or not  </param>
         public void HandleCircleCommand(string[] commandParts)
         {
             if (commandParts.Length >= 2)
@@ -241,6 +264,10 @@ namespace ASE_2
             }
         }
 
+        /// <summary>
+        /// Processes a Moveto drawing.
+        /// </summary>
+        /// <param name="commandParts">This Prg is to handles Moveto command is correct or not  </param>
         public void HandleMoveToCommand(string[] commandParts)
         {
             if (commandParts.Length >= 3)
@@ -260,6 +287,10 @@ namespace ASE_2
             }
         }
 
+        /// <summary>
+        /// Processes a Circle drawing.
+        /// </summary>
+        /// <param name="commandParts">This Prg is to handles Rectangle command is correct or not  </param>
         public void HandleRectangleCommand(string[] commandParts)
         {
             if (commandParts.Length >= 3)
@@ -278,6 +309,11 @@ namespace ASE_2
             }
         }
 
+        /// <summary>
+        /// Processes a Circle drawing.
+        /// </summary>
+        /// <param name="commandParts">This Prg is to handles Square command is correct or not  </param>
+        /// 
         public void HandleSquareCommand(string[] commandParts)
         {
             if (commandParts.Length >= 2)
@@ -294,6 +330,10 @@ namespace ASE_2
             }
         }
 
+        /// <summary>
+        /// Processes a Circle drawing.
+        /// </summary>
+        /// <param name="commandParts">This Prg is to handles Color command is correct or not  </param>
         public void HandleColorCommand(string[] commandParts)
         {
             if (commandParts.Length >= 2)
@@ -314,6 +354,12 @@ namespace ASE_2
             }
         }
 
+        /// <summary>
+        /// Processes a Circle drawing.
+        /// </summary>
+        /// <param name="variableName">This to get variable name user alerady declared  </param>
+        /// <param name="variableValue">This to get value of variable user alerady declared  </param>
+        /// 
         public bool TryGetVariableValue(string variableName, out int variableValue)
         {
             variableValue = pv.VariableProcessor.GetVariableValue(variableName);

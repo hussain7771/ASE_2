@@ -4,15 +4,24 @@ using System.Data;
 using System.Linq;
 using System.Reflection.Emit;
 
-namespace ASE_2 
+namespace ASE_2
 {
+    /// <summary>
+    /// A class for processing variables and evaluating expressions.
+    /// </summary>
     public class VariableProcessor
     {
         private static VariableProcessor instance;
         private Dictionary<string, int> dataStorage = new Dictionary<string, int>();
 
+        /// <summary>
+        /// Constructs a new instance of the VariableProcessor class.
+        /// </summary>
         public VariableProcessor() { }
 
+        /// <summary>
+        /// Gets the singleton instance of the VariableProcessor class.
+        /// </summary>
         public static VariableProcessor Singleton
         {
             get
@@ -25,11 +34,17 @@ namespace ASE_2
             }
         }
 
+        /// <summary>
+        /// Checks if a variable with the specified alias exists.
+        /// </summary>
         public bool IsVariableExisting(string variableAlias)
         {
             return dataStorage.ContainsKey(variableAlias);
         }
 
+        /// <summary>
+        /// Gets the value of the variable with the specified alias.
+        /// </summary>
         public int GetVariableValue(string variableAlias)
         {
             if (dataStorage.TryGetValue(variableAlias, out int value))
@@ -42,21 +57,33 @@ namespace ASE_2
             }
         }
 
+        /// <summary>
+        /// Assigns a value to the variable with the specified alias.
+        /// </summary>
         public void AssignVariableValue(string variableAlias, int value)
         {
             dataStorage[variableAlias] = value;
         }
 
+        /// <summary>
+        /// Clears all data storage.
+        /// </summary>
         public void ClearDataStorage()
         {
             dataStorage.Clear();
         }
 
+        /// <summary>
+        /// Retrieves all variable aliases.
+        /// </summary>
         public IEnumerable<string> GetAllVariableAliases()
         {
             return dataStorage.Keys;
         }
 
+        /// <summary>
+        /// Processes a variable assignment command.
+        /// </summary>
         public void ProcessVariableAssignment(string command)
         {
             string[] assignmentParts = command.Split('=').Select(part => part.Trim()).ToArray();
@@ -82,6 +109,9 @@ namespace ASE_2
             }
         }
 
+        /// <summary>
+        /// Evaluates an arithmetic expression.
+        /// </summary>
         public int EvaluateExpression(string expression)
         {
             Dictionary<string, int> variableValues = new Dictionary<string, int>();
@@ -94,6 +124,9 @@ namespace ASE_2
             return ProcessRecursiveExpression(expression, variableValues);
         }
 
+        /// <summary>
+        /// Recursively processes an arithmetic expression.
+        /// </summary>
         public int ProcessRecursiveExpression(string expression, Dictionary<string, int> variableValues)
         {
             if (int.TryParse(expression, out int value))

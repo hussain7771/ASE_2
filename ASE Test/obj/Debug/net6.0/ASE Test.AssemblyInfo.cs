@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ASE Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9f17d582779eb14cf5f918da305e455c20013d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e19608de961456a8c633e5db7e3624c8eded824")]
 [assembly: System.Reflection.AssemblyProductAttribute("ASE Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ASE Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

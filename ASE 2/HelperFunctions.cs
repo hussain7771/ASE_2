@@ -8,10 +8,17 @@ using System.Windows.Forms;
 
 namespace ASE_2
 {
+    /// <summary>
+    /// A class containing helper functions for the ASE application.
+    /// </summary>
     public class HelperFunctions
     {
-
-        public static void DisplayMessage(PictureBox pictureBox, string errorMessage) 
+        /// <summary>
+        /// Displays an error message on a PictureBox control.
+        /// </summary>
+        /// <param name="pictureBox">The PictureBox control where the message will be displayed.</param>
+        /// <param name="errorMessage">The error message to be displayed.</param>
+        public static void DisplayMessage(PictureBox pictureBox, string errorMessage)
         {
             // Create a new bitmap for the PictureBox
             Bitmap bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
@@ -33,7 +40,5 @@ namespace ASE_2
             // Display the modified image with the message in the PictureBox
             pictureBox.Image = bmp;
         }
-
-
     }
 }
