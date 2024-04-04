@@ -7,8 +7,17 @@ using System.Threading.Tasks;
 
 namespace ASE_2
 {
+    /// <summary>
+    /// Provides functionality to parse color names into Color objects.
+    /// </summary>
     public class ColorHandler
     {
+        /// <summary>
+        /// Parses the specified color name into a Color object.
+        /// </summary>
+        /// <param name="colorName">The name of the color to parse.</param>
+        /// <returns>The Color object corresponding to the specified color name.</returns>
+        /// <exception cref="ArgumentException">Thrown when the specified color name is invalid.</exception>
         public static Color ParseColor(string colorName)
         {
             colorName = colorName.ToLower();
