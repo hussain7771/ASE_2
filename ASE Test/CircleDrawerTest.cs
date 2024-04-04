@@ -3,7 +3,7 @@ using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ASE_2;
 
-namespace ASE_2_Test
+namespace ASE_Test
 {
     [TestClass]
     public class CircleDrawerTests
