@@ -106,9 +106,10 @@ C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ASE Test.GeneratedMSBuildEd
 C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ASE Test.AssemblyInfoInputs.cache
 C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ASE Test.AssemblyInfo.cs
 C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ASE Test.csproj.CoreCompileInputs.cache
-C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ASE Test.csproj.CopyComplete
 C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ASE Test.dll
 C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\refint\ASE Test.dll
 C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ASE Test.pdb
 C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ASE Test.genruntimeconfig.cache
 C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ref\ASE Test.dll
+C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ASE Test.sourcelink.json
+C:\Users\PC\Desktop\Part 2\ASE Test\obj\Debug\net6.0\ASE Test.csproj.Up2Date

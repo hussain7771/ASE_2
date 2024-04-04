@@ -28,3 +28,23 @@ C:\Users\PC\Desktop\Part 2\ASE 2\obj\Debug\ASE 2.csproj.GenerateResource.cache
 C:\Users\PC\Desktop\Part 2\ASE 2\obj\Debug\ASE 2.csproj.CoreCompileInputs.cache
 C:\Users\PC\Desktop\Part 2\ASE 2\obj\Debug\ASE 2.exe
 C:\Users\PC\Desktop\Part 2\ASE 2\obj\Debug\ASE 2.pdb
+C:\Users\Hussain\Desktop\Part 2\ASE 2\bin\Debug\ASE 2.exe.config
+C:\Users\Hussain\Desktop\Part 2\ASE 2\bin\Debug\ASE 2.exe
+C:\Users\Hussain\Desktop\Part 2\ASE 2\bin\Debug\ASE 2.pdb
+C:\Users\Hussain\Desktop\Part 2\ASE 2\obj\Debug\ASE 2.csproj.AssemblyReference.cache
+C:\Users\Hussain\Desktop\Part 2\ASE 2\obj\Debug\ASE_2.Form1.resources
+C:\Users\Hussain\Desktop\Part 2\ASE 2\obj\Debug\ASE_2.Properties.Resources.resources
+C:\Users\Hussain\Desktop\Part 2\ASE 2\obj\Debug\ASE 2.csproj.GenerateResource.cache
+C:\Users\Hussain\Desktop\Part 2\ASE 2\obj\Debug\ASE 2.csproj.CoreCompileInputs.cache
+C:\Users\Hussain\Desktop\Part 2\ASE 2\obj\Debug\ASE 2.exe
+C:\Users\Hussain\Desktop\Part 2\ASE 2\obj\Debug\ASE 2.pdb
+C:\Users\PC\Downloads\ASE 2\bin\Debug\ASE 2.exe.config
+C:\Users\PC\Downloads\ASE 2\bin\Debug\ASE 2.exe
+C:\Users\PC\Downloads\ASE 2\bin\Debug\ASE 2.pdb
+C:\Users\PC\Downloads\ASE 2\obj\Debug\ASE 2.csproj.AssemblyReference.cache
+C:\Users\PC\Downloads\ASE 2\obj\Debug\ASE_2.Form1.resources
+C:\Users\PC\Downloads\ASE 2\obj\Debug\ASE_2.Properties.Resources.resources
+C:\Users\PC\Downloads\ASE 2\obj\Debug\ASE 2.csproj.GenerateResource.cache
+C:\Users\PC\Downloads\ASE 2\obj\Debug\ASE 2.csproj.CoreCompileInputs.cache
+C:\Users\PC\Downloads\ASE 2\obj\Debug\ASE 2.exe
+C:\Users\PC\Downloads\ASE 2\obj\Debug\ASE 2.pdb

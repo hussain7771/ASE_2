@@ -7,17 +7,11 @@ using System.Windows.Forms;
 
 namespace ASE_2
 {
-    /// <summary>
-    /// Represents the main form of the application.
-    /// </summary>
     public partial class Form1 : Form
     {
         private PrivateVariables pv;
         private ProcessCommandHandler commandHandler;
 
-        /// <summary>
-        /// Initializes a new instance of the Form1 class.
-        /// </summary>
         public Form1()
         {
             InitializeComponent();
@@ -25,9 +19,6 @@ namespace ASE_2
             commandHandler = new ProcessCommandHandler(pv);
         }
 
-        /// <summary>
-        /// Handles the click event of the Run button.
-        /// </summary>
         public void Run_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(CommandInput.Text))
@@ -38,11 +29,6 @@ namespace ASE_2
             commandHandler.ProcessCommand(CommandInput.Text);
         }
 
-        /// <summary>
-        /// Parses the parameter value.
-        /// </summary>
-        /// <param name="parameter">The parameter value to parse.</param>
-        /// <returns>The parsed parameter value.</returns>
         private int ParseParameterValue(string parameter)
         {
             if (pv.variables.ContainsKey(parameter))
@@ -64,9 +50,11 @@ namespace ASE_2
             }
         }
 
-        /// <summary>
-        /// Handles the click event of the Save button.
-        /// </summary>
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public void Save_Click(object sender, EventArgs e)
         {
             var saveFileDialog = new SaveFileDialog();
@@ -82,9 +70,6 @@ namespace ASE_2
             }
         }
 
-        /// <summary>
-        /// Handles the click event of the Open button.
-        /// </summary>
         public void Open_Click(object sender, EventArgs e)
         {
             OpenFileDialog opentext = new OpenFileDialog();
@@ -99,9 +84,6 @@ namespace ASE_2
             }
         }
 
-        /// <summary>
-        /// Handles the click event of the Clear button.
-        /// </summary>
         public void Clear_Click(object sender, EventArgs e)
         {
             pv.variables.Clear();
@@ -112,12 +94,5 @@ namespace ASE_2
             pv.whileCondition = "";
         }
 
-        /// <summary>
-        /// Throws NotImplementedException when invoked with two parameters.
-        /// </summary>
-        public void Clear_Click(object value1, object value2)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
