@@ -6,9 +6,15 @@ using System.Drawing.Drawing2D;
 
 namespace ASE_2
 {
+    /// <summary>
+    /// Unit tests for the RectangleDrawer class.
+    /// </summary>
     [TestClass]
     public class RectangleDrawerTests
     {
+        /// <summary>
+        /// Test to verify drawing a rectangle with valid parameters.
+        /// </summary>
         [TestMethod]
         public void DrawRectangle_ValidParameters()
         {
@@ -33,6 +39,12 @@ namespace ASE_2
             Assert.IsTrue(IsRectangleDrawn(bitmap, rectanglePath), "Rectangle is not drawn correctly.");
         }
 
+        /// <summary>
+        /// Helper method to check if the rectangle is drawn in the bitmap.
+        /// </summary>
+        /// <param name="bmp">Bitmap to check.</param>
+        /// <param name="rectanglePath">Graphics path representing the rectangle.</param>
+        /// <returns>True if the rectangle is drawn, false otherwise.</returns>
         private bool IsRectangleDrawn(Bitmap bmp, GraphicsPath rectanglePath)
         {
             // Check if the rectangle is drawn in the bitmap
